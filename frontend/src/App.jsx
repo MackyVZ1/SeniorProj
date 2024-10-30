@@ -2,14 +2,14 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // ลิงค์รูปมอ
+  const universityLogo = "https://www.eng.nu.ac.th/eng2022/images/2015_color.png"
 
   return (
-    <>
-      <h1 className = "text-3xl text-red-500 font-bold underline">
-      Hello world!
-      </h1>
-    </>
+    <header>
+      
+    </header>
   )
 }
 

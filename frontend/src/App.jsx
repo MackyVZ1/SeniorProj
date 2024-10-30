@@ -8,12 +8,7 @@ function App() {
 
   return (
     <>
-      <p>Hello</p>
-      <p> Young Dumb </p>
-      <p> Test</p>
-      <p> test2</p>
-      <p> test3</p>
-      <p> test4</p>
+      
     </>
   )
 }

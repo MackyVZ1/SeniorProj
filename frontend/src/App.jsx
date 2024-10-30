@@ -11,6 +11,7 @@ function App() {
       <p>Hello</p>
       <p> Young Dumb </p>
       <p> Test</p>
+      <p> test2</p>
     </>
   )
 }

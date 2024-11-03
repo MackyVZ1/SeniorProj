@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './App.css'
 import {GoogleLogin, GoogleLogout} from 'react-google-login' 
 import { gapi } from 'gapi-script'
 
-function App() {
-  // id ที่ใช้เชื่อมกับการทำ Google Authenticator
+
+const Mainpage = () => {
+    // id ที่ใช้เชื่อมกับการทำ Google Authenticator
   const clientId = "1055730967869-baqfhf1uo2k26e6i4i5k65onev345fqn.apps.googleusercontent.com"
 
   // ลิงค์รูป
@@ -84,6 +84,7 @@ function App() {
       </div>
     </div>
   )
+
 }
 
-export default App;
+export default Mainpage;

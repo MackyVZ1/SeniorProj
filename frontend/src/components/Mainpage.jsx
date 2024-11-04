@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {GoogleLogin, GoogleLogout} from 'react-google-login' 
 import { gapi } from 'gapi-script'
 import { X } from 'lucide-react' // import icon กากบาท
-
+import floristryLogo from '../elements/floristryLogo.png'
 
 const Mainpage = () => {
   // id ที่ใช้เชื่อมกับการทำ Google Authenticator
@@ -57,11 +57,6 @@ const Mainpage = () => {
     setProfile(null)
   }
 
-  // กด "เกี่ยวกับเรา"
-  const handleAboutus = () => {
-    nav("/aboutus")
-  }
-
   return (
     // <>
     //   <h2> React Google Login</h2>
@@ -99,7 +94,7 @@ const Mainpage = () => {
         <div className="ml-5 py-8 font-semibold text-2xl text-white ">
           เกมพัฒนาทักษะทางคณิตศาสตร์ | Mathimatical Game
         </div>
-        <button onClick={handleAboutus}
+        <button onClick={() => {nav("/aboutus")}}
               className="text-white border-2 rounded-2xl ml-auto my-6 pl-6 pr-6 hover:text-red-500 hover:bg-white hover:transfrom duration-150 ">
           เกี่ยวกับเรา
         </button>
@@ -115,16 +110,14 @@ const Mainpage = () => {
         เกมทั้งหมด
       </div>
       {/**แถวที่แสดงเกมทั้งหมดที่มี */}
-      <div className="border-4 rounded-2xl ml-48 mr-48 my-12 p-10">
+      <div className="border-4 border-black rounded-2xl ml-48 mr-48 my-12 p-10">
         {/**แถวเกมแถวที่ 1 */}
         <div className="flex justify-between text-center my-4">
-          <div>
+          <div className='overflow-hidden'>
             <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 1
-              </div>
+              <img  onClick={() => {nav("/floristry")}}src={floristryLogo} className="rounded-xl m-0 object-cover w-48 hover:shadow-md hover:transform duration-150"/>
             </button>
-            <p> ชื่อเกมที่ 1</p>
+            <p> Floristry</p>
           </div>
           <div>
             <button>
@@ -155,7 +148,7 @@ const Mainpage = () => {
         <div className="flex justify-between text-center my-8">
         <div>
             <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
+              <div  className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
                 รูปเกมที่ 5
               </div>
             </button>

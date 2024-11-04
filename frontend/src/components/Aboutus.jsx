@@ -4,63 +4,59 @@ import {GoogleLogin, GoogleLogout} from 'react-google-login'
 import { gapi } from 'gapi-script'
 import { X } from 'lucide-react' // import icon กากบาท
 
-
-const Mainpage = () => {
+const Aboutus = () => {
   // id ที่ใช้เชื่อมกับการทำ Google Authenticator
-  const clientId = "1055730967869-baqfhf1uo2k26e6i4i5k65onev345fqn.apps.googleusercontent.com"
+  const clientId =
+    "1055730967869-baqfhf1uo2k26e6i4i5k65onev345fqn.apps.googleusercontent.com";
 
   // ลิงค์รูป
-  const enLogo = "https://upload.wikimedia.org/wikipedia/th/thumb/1/1d/NU_ENG_2015_Logo.png/800px-NU_ENG_2015_Logo.png"
-  const eduLogo = "https://nclist.fiet.kmutt.ac.th/images/nclist2022/logo/04_logo_NU.png"
+  const enLogo =
+    "https://upload.wikimedia.org/wikipedia/th/thumb/1/1d/NU_ENG_2015_Logo.png/800px-NU_ENG_2015_Logo.png";
+  const eduLogo =
+    "https://nclist.fiet.kmutt.ac.th/images/nclist2022/logo/04_logo_NU.png";
 
   // ตัวแปรใช้ย้ายหน้าเว็บ
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   // ตัวแปรเก็บค่าต่างๆ
-  const [profile, setProfile] = useState([]) // เก็บข้อมูล profile
-  const [logging, setLogging] = useState(false) // เก็บข้อมูลจะเปิดหน้าล็อคอิน
+  const [profile, setProfile] = useState([]); // เก็บข้อมูล profile
+  const [logging, setLogging] = useState(false); // เก็บข้อมูลจะเปิดหน้าล็อคอิน
 
-  
   // ------ รวมฟังก์ชัน ------
   // ฟังก์ชันเมื่อ login สำเร็จ
   const onSuccess = (res) => {
-    setProfile(res.profileObj)
-    console.log('Success', res)
-    console.log(profile)
-  }
+    setProfile(res.profileObj);
+    console.log("Success", res);
+    console.log(profile);
+  };
   // ฟังก์ชันเมื่อ login ไม่สำเร็๗
   const onFailure = (res) => {
-    console.log('Failed', res)
-  }
+    console.log("Failed", res);
+  };
 
   // ------ useEffect ------
   // เรียกใช้ครั้งแรก
-  useEffect (() => {
+  useEffect(() => {
     // เรียกใช้ google authenticator
     const initClient = () => {
       gapi.client.init({
         clientId: clientId,
-        scope:''
-      })
-    }
-    gapi.load("client:auth2", initClient)
-  }, [])
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  }, []);
 
   // ------ Handle Event ------
   // กดปุ่มลงชื่อเข้าใช้ / สมัครบัญชี
-  const handleLogin = () =>{
-    setLogging(true)
-  }
-  
+  const handleLogin = () => {
+    setLogging(true);
+  };
+
   // กด logout
   const handleLogout = () => {
-    setProfile(null)
-  }
-
-  // กด "เกี่ยวกับเรา"
-  const handleAboutus = () => {
-    nav("/aboutus")
-  }
+    setProfile(null);
+  };
 
   return (
     // <>
@@ -99,8 +95,7 @@ const Mainpage = () => {
         <div className="ml-5 py-8 font-semibold text-2xl text-white ">
           เกมพัฒนาทักษะทางคณิตศาสตร์ | Mathimatical Game
         </div>
-        <button onClick={handleAboutus}
-              className="text-white border-2 rounded-2xl ml-auto my-6 pl-6 pr-6 hover:text-red-500 hover:bg-white hover:transfrom duration-150 ">
+        <button className="text-white border-2 rounded-2xl ml-auto my-6 pl-6 pr-6 hover:text-red-500 hover:bg-white hover:transfrom duration-150 ">
           เกี่ยวกับเรา
         </button>
         <button
@@ -112,81 +107,9 @@ const Mainpage = () => {
       </div>
       {/**แถบอะไรวะค่อยคิด  */}
       <div className="p-16 bg-black text-3xl text-white font-medium text-center">
-        เกมทั้งหมด
+        เกี่ยวกับเรา
       </div>
-      {/**แถวที่แสดงเกมทั้งหมดที่มี */}
-      <div className="border-4 rounded-2xl ml-48 mr-48 my-12 p-10">
-        {/**แถวเกมแถวที่ 1 */}
-        <div className="flex justify-between text-center my-4">
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 1
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 1</p>
-          </div>
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 2
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 2</p>
-          </div>
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 3
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 3</p>
-          </div>
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 4
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 4</p>
-          </div>
-        </div>
-        {/**แถวเกมแถวที่ 2 */}
-        <div className="flex justify-between text-center my-8">
-        <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 5
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 5</p>
-          </div>
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 6
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 6</p>
-          </div>
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 7
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 7</p>
-          </div>
-          <div>
-            <button>
-              <div className="border-4 rounded-xl m-0 p-14 hover:border-black hover:transform duration-150">
-                รูปเกมที่ 8
-              </div>
-            </button>
-            <p> ชื่อเกมที่ 8</p>
-          </div>
-        </div>
-      </div>
+      
 
       {/* เมื่อกดลงชื่อเข้าใช้*/}
       {logging && (
@@ -218,7 +141,5 @@ const Mainpage = () => {
       )}
     </div>
   );
-
 }
-
-export default Mainpage;
+export default Aboutus

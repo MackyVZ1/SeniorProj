@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function Floristry() {
+const Floristry = () => {
   return (
     <div>Floristry</div>
   )
 }
+
+export default Floristry

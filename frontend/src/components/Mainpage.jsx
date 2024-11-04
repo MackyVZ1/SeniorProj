@@ -46,12 +46,7 @@ const Mainpage = () => {
     gapi.load("client:auth2", initClient)
   }, [])
 
-  // ------ Handle Event ------
-  // กดปุ่มลงชื่อเข้าใช้ / สมัครบัญชี
-  const handleLogin = () =>{
-    setLogging(true)
-  }
-  
+  // ------ Handle Event ------  
   // กด logout
   const handleLogout = () => {
     setProfile(null)
@@ -83,7 +78,7 @@ const Mainpage = () => {
 
     <div className="font-['Kanit'] font-normal">
       {/*แถบข้างบน*/}
-      <div className="bg-red-500 m-0 flex overflow-hidden shadow-md shadow-red-400">
+      <nav className="bg-red-500 m-0 flex overflow-hidden shadow-md shadow-red-400">
         <div
           className="bg-slate-100 flex p-3 pr-10 -skew-x-[-24deg]"
           style={{ marginLeft: "-20px", paddingLeft: "20px" }}
@@ -99,12 +94,12 @@ const Mainpage = () => {
           เกี่ยวกับเรา
         </button>
         <button
-          onClick={handleLogin}
+          onClick={() => {setLogging(true)}}
           className="text-white border-2 rounded-2xl ml-5 mr-5 my-6 pl-6 pr-6 hover:text-red-500 hover:bg-white hover:transfrom duration-150"
         >
           ลงชื่อเข้าใช้ / สมัครบัญชี
         </button>
-      </div>
+      </nav>
       {/**แถบอะไรวะค่อยคิด  */}
       <div className="p-16 bg-black text-3xl text-white font-medium text-center">
         เกมทั้งหมด

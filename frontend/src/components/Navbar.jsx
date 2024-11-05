@@ -16,10 +16,12 @@ export default function Navbar() {
   // ตัวแปรเก็บค่าต่างๆ
   const [logging, setLogging] = useState(false) // เก็บข้อมูลจะเปิดหน้าล็อคอิน
 
-  const handleLoginpopup = () => {
+  // เมิ่อกดปุ่ม ลงชื่อเข้าใช้
+  const openPopup = () => {
     setLogging(true)
   }
 
+  // กดปิดหน้าต่างลงชื่อเข้าใช้
   const closePopup = () => {
     setLogging(false)
   }
@@ -43,11 +45,12 @@ export default function Navbar() {
         เกี่ยวกับเรา
       </button>
       <button
-        onClick={handleLoginpopup}
+        onClick={openPopup}
         className="text-white border-2 rounded-2xl ml-5 mr-5 my-6 pl-6 pr-6 hover:text-red-500 hover:bg-white hover:transfrom duration-150"
       >
         ลงชื่อเข้าใช้ / สมัครบัญชี
       </button>
+      {/**ถ้ามีการกดปุ่มให้เรียก Loginpopup */}
       {logging && <Loginpopup onOpen={logging} onClose={closePopup}/>}
     </nav>
   );

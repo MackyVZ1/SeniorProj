@@ -11,7 +11,7 @@ export default function Aboutus() {
         
       </header>
       <p className="my-12 font-medium text-2xl text-center">
-        อาจารย์ที่ปรึกษาโครงาน
+        อาจารย์ที่ปรึกษาโครงงาน
       </p>
       {/**ข้อมูลอาจารย์ */}
       <div className="mx-96 my-12 p-10">

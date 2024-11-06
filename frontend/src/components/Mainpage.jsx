@@ -1,8 +1,5 @@
-import { useState, useEffect } from 'react'
-import { X } from 'lucide-react' // import icon กากบาท
-import floristryLogo from '../../elements/floristryLogo.png'
-import Listgame from '../Listgame'
-import Navbar from '../navbar'
+import Listgame from './mainpage/Listgame'
+import Navbar from './mainpage/Navbar'
 
 
 const Mainpage = () => {

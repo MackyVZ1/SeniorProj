@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import floristryLogo from "../elements/floristryLogo.png"; // icon รูปเกม
+import floristryLogo from "../../elements/floristryLogo.png"; // icon รูปเกม
 
 export default function Listgame() {
   // ตัวแปรใช้ย้ายหน้าเว็บ

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import Mainpage from './components/mainpage/Mainpage'
-import Aboutus from './components/aboutus/Aboutus';
-import Floristry from './components/Floristry';
+import Mainpage from './components/Mainpage'
+import Aboutus from './components/Aboutus'
+import Floristry from './components/floristry/Floristry';
 function App() {
   
   return (

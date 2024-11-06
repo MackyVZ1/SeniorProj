@@ -35,7 +35,7 @@ export default function Navbar() {
         <img className="w-16 h-16 skew-x-[-24deg] ml-8 my-1" src={enLogo} />
         <img className="w-16 h-16 skew-x-[-24deg] ml-8 my-1" src={eduLogo} />
       </div>
-      <a href="/" className="ml-5 py-8 font-semibold text-2xl text-white hover:underline">
+      <a href="/" className="ml-5 py-8 font-semibold text-2xl text-white">
         เกมพัฒนาทักษะทางคณิตศาสตร์ | Mathimatical Game
       </a>
       <button

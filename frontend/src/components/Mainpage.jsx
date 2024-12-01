@@ -9,11 +9,11 @@ const Mainpage = () => {
       {/*Navigate bar*/}
       <Navbar/>
       {/**Header*/}
-      <header className="p-16 bg-black text-3xl text-white font-medium text-center">
-        เกมทั้งหมด
-      </header>
+      {/**<header className="p-16 bg-black text-3xl text-white font-medium text-center">*/}
+        {/* เกมทั้งหมด */}
+      {/* </header> */}
       {/**แถวที่แสดงเกมทั้งหมดที่มี */}
-      <Listgame/>
+      {/* <Listgame/> */}
     </div>
   );
 

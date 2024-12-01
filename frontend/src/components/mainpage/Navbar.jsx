@@ -27,27 +27,8 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-red-500 flex overflow-hidden shadow-md shadow-red-400 sticky w-full top-0 z-50">
-      <div
-        className="bg-slate-100 flex p-3 pr-10 -skew-x-[-24deg]"
-        style={{ marginLeft: "-20px", paddingLeft: "20px" }}
-      >
-        <img className="w-16 h-16 skew-x-[-24deg] ml-8 my-1" src={enLogo} />
-        <img className="w-16 h-16 skew-x-[-24deg] ml-8 my-1" src={eduLogo} />
-      </div>
-      <a href="/" className="ml-5 py-8 font-semibold text-2xl text-white">
-        เกมพัฒนาทักษะทางคณิตศาสตร์ | Mathimatical Game
-      </a>
-      <button
-        onClick={() => {nav('/aboutus')}}
-        className="text-white border-2 rounded-2xl ml-auto my-6 pl-6 pr-6 hover:text-red-500 hover:bg-white hover:transfrom duration-150 "
-      >
-        เกี่ยวกับเรา
-      </button>
-      <button className="m-5">
-        <Login/>
-      </button>
-      
+    <nav className="bg-red-500 p-24">
+
     </nav>
   );
 }

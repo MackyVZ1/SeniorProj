@@ -26,14 +26,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-red-500 shadow-red-600 shadow-lg flex justify-between sm:flex sm:justify-between sticky top-0 z-50 md:flex md:justify-between">
-      <div className="bg-white flex justify-between p-6 -skew-x-[-24deg]"
+    <nav className="w-auto h-16 bg-red-500 shadow-red-600 shadow-lg flex sticky top-0 z-50 sm:h-16 md:h-18 lg:h-20">
+      <div className="bg-white flex justify-between -skew-x-[-24deg] px-12"
       style={{ marginLeft: "-40px"}}>
-        <img className="w-24 h-24 skew-x-[-24deg] ml-8 my-1" src={enLogo} />
-        <img className="w-24 h-24 skew-x-[-24deg] ml-8 my-1" src={eduLogo} />
+        <img className="w-auto h-auto skew-x-[-24deg] ml-8 my-1" src={enLogo} />
+        <img className="w-auto h-auto skew-x-[-24deg] ml-8 my-1" src={eduLogo} />
       </div>
-      <div className="bg-white p-6 border-8 border-black"></div>
-      <div className="bg-white p-6 border-8 border-black"></div>
+      <div className="text-white text-2xl font-medium p-auto m-auto">เกมพัฒนาทักษะทางคณิตศาสตร์</div>
     </nav>
   );
 }

@@ -78,11 +78,11 @@ export default function Navbar() {
         <div className="absolute top-16 right-0 w-full bg-white shadow-lg shadow-red-500 flex flex-col items-center gap-4 py-4 my-4 sm:my-0 lg:my-4 xl:hidden">
           <button
             onClick={() => nav("/aboutus")}
-            className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 hover:bg-white hover:text-red-500 transition duration-150"
+            className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 hover:bg-red-500 hover:text-white hover:border-red-500 transition duration-150"
           >
             เกี่ยวกับเรา
           </button>
-          <button className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 hover:bg-white hover:text-red-500 transition duration-150"
+          <button className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 hover:bg-red-500 hover:text-white hover:border-red-500 transition duration-150"
           onClick={() => setopenLogin(true)}>
             ลงชื่อเข้าใช้/สมัครบัญชี
           </button>
@@ -120,7 +120,7 @@ export default function Navbar() {
               ลงชื่อเข้าใช้ / สมัครบัญชี
             </h1>
             {/* ส่วนของ Google Authentication */}
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center p-16">
               <Login />
             </div>
           </div>

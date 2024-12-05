@@ -7,8 +7,8 @@ export default function Teacherinfo() {
         อาจารย์ที่ปรึกษาโครงงาน
       </p>
       {/**ข้อมูลอาจารย์ */}
-      <div className="mx-96 my-12 p-10">
-        <div className="flex justify-between items-center">
+      <div className="w-auto h-auto">
+        <div className="flex m-auto p-auto justify-center gap-36">
           <div className="text-center font-medium">
             <img
               className="w-48 h-52 object-cover mb-3"

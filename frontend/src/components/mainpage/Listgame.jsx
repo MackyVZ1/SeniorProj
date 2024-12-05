@@ -15,7 +15,7 @@ export default function Listgame() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 text-center">
             {/* การ์ดเกม */}
             <div>
-              <button>
+              <button onClick={() => nav("/floristry")}>
                 <img className="rounded-2xl w-36 h-36 mx-auto transition duration-150 hover:shadow-2xl hover:border-2" src={floristryLogo}/>
               </button>
               <h1 className="text-black text-lg mt-2">Floristry</h1>

@@ -6,8 +6,8 @@ function Students() {
         <p className="my-12 font-medium text-2xl text-center"> นิสิตผู้มีส่วนเกี่ยวข้อง</p>
         <div className="flex justify-center gap-96 w-auto h-auto">
             {/**วิศวกรรมศาสตร์ */}
-            <div className="w-auto h-auto my-12">
-                <p className="text-2xl sm:text-sm text-center">นิสิตคณะวิศวกรรมศาสตร์</p>
+            <div className="my-12">
+                <p className="text-2xl text-center">นิสิตคณะวิศวกรรมศาสตร์</p>
                 <p className="text-center text-xl">Floristry</p>
                 <p>65363810 นางสาวภัทราพร หน่อลิน</p>
                 <p>65364565 นายวีรภัทร พิชญ์วรรณขาม</p>

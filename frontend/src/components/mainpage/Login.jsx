@@ -31,6 +31,7 @@ export default function Login() {
           hd: credentialDecoded.hd,
           picture: credentialDecoded.picture
         })
+        console.log(user)
       }
       
     }catch(error){

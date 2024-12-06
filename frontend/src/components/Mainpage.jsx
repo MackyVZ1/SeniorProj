@@ -4,7 +4,7 @@ import Footer from './mainpage/Footer';
 const Mainpage = () => {
   
   return (
-    <div className="font-['Kanit'] font-normal ">
+    <div className="font-['Kanit'] font-normal">
       {/*Navigate bar*/}
       <Navbar/>
       {/**Header*/}

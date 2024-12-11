@@ -6,7 +6,7 @@ const max_retry = 5
 const time_retry = 5000 // milisec
 
 
-const initMySQL = async (max_retry) =>{
+const initMySQL = async () =>{
     try{
         const db = await mysql.createPool({
             host: 'localhost',
@@ -24,6 +24,7 @@ const initMySQL = async (max_retry) =>{
         )`
         db.query(initQuery)
         console.log("Create table users completed.")
+        return db
     }catch{
         console.error('Cannot connect to MySQL: ', err);
     }

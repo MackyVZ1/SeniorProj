@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 
 export default function Navbar() {
+  // ตัวแปรต่างๆ
   const enLogo =
     "https://upload.wikimedia.org/wikipedia/th/thumb/1/1d/NU_ENG_2015_Logo.png/800px-NU_ENG_2015_Logo.png";
   const eduLogo =
@@ -12,6 +13,27 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false); // ควบคุมการเปิด/ปิดเมนู
   const [openLogin, setOpenLogin] = useState(false); // ควบคุมการเปิดหน้าต่างลงชื่อเข้าใช้
   const [user, setUser] = useState(null); // เก็บข้อมูลผู้ใช้
+
+  // ฟังก์ชันต่างๆ
+  const handleLogin = (userData) => {
+    setUser(userData); // อัปเดตข้อมูลผู้ใช้ใน State
+    sessionStorage.setItem("user", JSON.stringify(userData)); // เก็บข้อมูลใน sessionStorage
+    setOpenLogin(false); // ปิดหน้าต่างล็อกอิน
+  };
+
+  const handleLogout = () => {
+    setUser(null); // ล้างข้อมูลผู้ใช้
+    sessionStorage.removeItem("user"); // ลบข้อมูลใน sessionStorage
+    setMenuOpen(false) // ปิดลงชื่อออก
+  };
+
+  // โหลดข้อมูลผู้ใช้จาก sessionStorage เมื่อ Component โหลดครั้งแรก
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // ดึงข้อมูลจาก sessionStorage มาใช้
+    }
+  }, []);
 
   return (
     <nav className="w-auto h-16 bg-red-500 shadow-red-600 shadow-lg flex sticky top-0 z-50 md:h-18 lg:h-20">
@@ -57,7 +79,7 @@ export default function Navbar() {
       </button>
 
       {/* Desktop View */}
-      <div className={`flex gap-6 sm:hidden md:hidden xl:flex`}>
+      <div className={`flex item-center gap-6 sm:hidden md:hidden xl:flex`}>
         <button
           onClick={() => nav("/aboutus")}
           className="text-white border-2 rounded-lg px-4 my-4 hover:bg-white hover:text-red-500 transition duration-150"
@@ -65,9 +87,38 @@ export default function Navbar() {
           เกี่ยวกับเรา
         </button>
         {user ? (
-          <span className="text-white border-2 rounded-lg px-4 my-4 mr-2">
-            {user.email}
-          </span>
+          <div className="relative">
+            <button 
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-white border-2 rounded-lg px-2 py-2 my-4 mr-4 flex items-center hover:bg-white hover:text-red-500 transition duration-150">
+              {user.email}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`h-5 w-5 ml-2 transition-transform ${
+                  menuOpen ? "rotate-180" : ""
+                }`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {menuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  ลงชื่อออก
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
           <button
             className="text-white border-2 rounded-lg px-4 my-4 mr-2 hover:bg-white hover:text-red-500 transition duration-150"
@@ -77,8 +128,7 @@ export default function Navbar() {
           </button>
         )}
       </div>
-      
-      {/**เเก้ตรงนี้ต่อ */}
+
       {/* Pop-up Menu */}
       {menuOpen && (
         <div className="absolute top-16 right-0 w-full bg-white shadow-lg shadow-red-500 flex flex-col items-center gap-4 py-4 my-4 sm:my-0 lg:my-4 xl:hidden">
@@ -89,9 +139,17 @@ export default function Navbar() {
             เกี่ยวกับเรา
           </button>
           {user ? (
-            <span className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 text-center">
-              {user.email}
-            </span>
+            <>
+              <span className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 text-center">
+                {user.email}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 hover:bg-red-500 hover:text-white hover:border-red-500 transition duration-150"
+              >
+                ลงชื่อออก
+              </button>
+            </>
           ) : (
             <button
               className="w-3/4 text-red-500 border-2 rounded-lg px-4 py-2 hover:bg-red-500 hover:text-white hover:border-red-500 transition duration-150"
@@ -129,16 +187,13 @@ export default function Navbar() {
                 />
               </svg>
             </button>
-            {/* ส่วนของ Google Authentication */}
             <h1 className="text-xl font-medium text-black mb-4">
               ลงชื่อเข้าใช้ / สมัครบัญชี
             </h1>
             <div className="w-full flex justify-center p-16">
-              {/* ส่ง setUser และ setOpenLogin เป็น props */}
               <Login
                 setUser={(user) => {
-                  setUser(user); // อัปเดตข้อมูลผู้ใช้
-                  setOpenLogin(false); // ปิดหน้าต่างเมื่อเข้าสู่ระบบสำเร็จ
+                  handleLogin(user)
                 }}
               />
             </div>

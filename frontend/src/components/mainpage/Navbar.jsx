@@ -24,7 +24,7 @@ export default function Navbar() {
   const handleLogout = () => {
     setUser(null); // ล้างข้อมูลผู้ใช้
     sessionStorage.removeItem("user"); // ลบข้อมูลใน sessionStorage
-    setMenuOpen(false) // ปิดลงชื่อออก
+    setMenuOpen(false); // ปิดลงชื่อออก
   };
 
   // โหลดข้อมูลผู้ใช้จาก sessionStorage เมื่อ Component โหลดครั้งแรก
@@ -82,15 +82,18 @@ export default function Navbar() {
       <div className={`flex item-center gap-6 sm:hidden md:hidden xl:flex`}>
         <button
           onClick={() => nav("/aboutus")}
-          className="text-white border-2 rounded-lg px-4 my-4 hover:bg-white hover:text-red-500 transition duration-150"
+          className="text-white  px-4 my-4  transition duration-150 relative group"
         >
           เกี่ยวกับเรา
+          <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
         </button>
+
         {user ? (
           <div className="relative">
-            <button 
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white border-2 rounded-lg px-2 py-2 my-4 mr-4 flex items-center hover:bg-white hover:text-red-500 transition duration-150">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white px-2 py-2 my-5 mr-4 flex items-center transition duration-150 relative group"
+            >
               {user.email}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,6 +109,7 @@ export default function Navbar() {
                   clipRule="evenodd"
                 />
               </svg>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
             </button>
 
             {menuOpen && (
@@ -193,7 +197,7 @@ export default function Navbar() {
             <div className="w-full flex justify-center p-16">
               <Login
                 setUser={(user) => {
-                  handleLogin(user)
+                  handleLogin(user);
                 }}
               />
             </div>

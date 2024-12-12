@@ -14,35 +14,44 @@ let mydatabase
     }
 })();
 
-// Sign Up
-router.post('/usersignup', (req, res) => {
-    // ตรวจสอบว่า req.body มีข้อมูลครบถ้วน
-    const { email, username, userRole } = req.body;
-
+// Sign In
+router.post('/usersignin', (req, res) => {
+    // รับข้อมูล user
     const user = {
         email: req.body.email,
         username: req.body.username,
-        userRole: req.body.userRole
+        role: req.body.role
     }
 
-    if (!user.email || !user.username || !user.userRole) {
-        return res.status(400).json({ error: 'Missing required fields.' });
+    // เช็คว่ารับค่ามาครบมั้ย
+    if(!user.email || !user.username || !user.role){
+        res.status(400).json({error: 'Missing required fields.'})
     }
 
-    const signinQuery = `INSERT INTO users (email, username, role) VALUES (?, ?, ?)`;
-
-    mydatabase.query(signinQuery, [user.email, user.username, user.userRole], (err, result) => {
-        if (err) {
+    // สร้าง query เพื่อดึงข้อมูลจากฐานข้อมูล
+    const signinQuery = `SELECT email FROM users WHERE email = ? AND username = ?`
+    mydatabase.query(signinQuery, [user.email, user.username], (err, result) => {
+        if(err){
             console.error('Database Error:', err.message);
-            return res.status(500).json({ error: 'Failed to sign up. Please try again later.' });
+            return res.status(500).json({ error: 'Database error while checking user.' });
+        }
+        // หากพบผู้ใช้ในระบบ
+        if (result.length > 0) {
+            return res.status(200).json({ message: 'User found.', user: result[0] });
         }
 
-        // หากสำเร็จ
-        res.status(201).json({ 
-            message: 'User signed up successfully.',
-            data: { email, username, userRole } // ส่งข้อมูลกลับ
+        // หากไม่พบผู้ใช้ ให้ทำการสมัคร (Sign Up)
+        const signupQuery = `INSERT INTO users (email, username, role) VALUES (?, ?, ?)`;
+        mydatabase.query(signupQuery, [user.email, user.username, user.role], (err, result) => {
+            if (err) {
+                console.error('Database Error:', err.message);
+                return res.status(500).json({ error: 'Failed to sign up. Please try again later.' });
+            }
+
+            // ส่งคำตอบเมื่อสมัครสำเร็จ
+            res.status(201).json({ message: 'User signed up successfully.', userId: result.insertId });
         });
-    });
+    })
 });
 router.get('/', (req,res) => {
     console.log("Hello World")

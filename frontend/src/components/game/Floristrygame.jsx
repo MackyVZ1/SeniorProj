@@ -2,7 +2,11 @@ import React from 'react'
 
 function Floristrygame() {
   return (
-    <div className="p-64 bg-yellow-200"></div>
+    <div>
+      <div className="border-2 rounded-2xl p-64 bg-slate-200 m-12">
+        
+      </div>
+    </div>
   )
 }
 

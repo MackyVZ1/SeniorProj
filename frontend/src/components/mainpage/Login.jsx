@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import {jwtDecode} from "jwt-decode";
 import axios from "axios";
@@ -17,18 +16,13 @@ export default function Login({ setUser, setOpenLogin }) {
         const updatedUser = {
           name: credentialDecoded.name,
           email: credentialDecoded.email,
-          hd: credentialDecoded.hd,
-          role: credentialDecoded.hd === "nu.ac.th" ? "Guest" : "Unverified",
         };
 
         // ส่งข้อมูลไปยัง Backend
-        if (updatedUser.hd === "nu.ac.th") {
-          await axios.post("http://localhost:5000/api/usersignin", {
-            email: updatedUser.email,
-            username: updatedUser.name,
-            role: updatedUser.role,
-          });
-        }
+        await axios.post("http://localhost:5000/api/usersignin", {
+          email: updatedUser.email,
+          username: updatedUser.name
+        });
 
         // อัปเดตข้อมูลผู้ใช้ใน Navbar
         setUser(updatedUser);
@@ -44,6 +38,10 @@ export default function Login({ setUser, setOpenLogin }) {
   const onError = () => {
     console.log("Login Failure.");
   };
+
+  useEffect(()=>{
+    console.log(updatedUser)
+  },[])
 
   return (
     <GoogleOAuthProvider clientId={clientId}>

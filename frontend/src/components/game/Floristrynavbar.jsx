@@ -39,7 +39,7 @@ export default function Floristrynavbar() {
     return (
       <nav className="w-auto h-16 bg-yellow-500 shadow-yellow-300 shadow-lg flex justify-between sticky top-0 z-50 md:h-18 lg:h-20">
         {/* ชื่อเว็บเกม */}
-        <div className="text-center py-5 mx-5 text-4xl font-bold text-white">Floristry🌻🪙</div>
+        <div className="text-center py-5 mx-5 text-4xl font-bold text-white sm:py-3 md:py-3 lg:py-5">Floristry🌻🪙</div>
         {/* ปุ่มสำหรับ Responsive */}
         <button
           className="ml-auto p-4 xl:hidden focus:outline-none"

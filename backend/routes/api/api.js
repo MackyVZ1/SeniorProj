@@ -20,11 +20,10 @@ router.post('/usersignin', (req, res) => {
     const user = {
         email: req.body.email,
         username: req.body.username,
-        role: req.body.role
     }
 
     // เช็คว่ารับค่ามาครบมั้ย
-    if(!user.email || !user.username || !user.role){
+    if(!user.email || !user.username){
         res.status(400).json({error: 'Missing required fields.'})
     }
 
@@ -41,8 +40,8 @@ router.post('/usersignin', (req, res) => {
         }
 
         // หากไม่พบผู้ใช้ ให้ทำการสมัคร (Sign Up)
-        const signupQuery = `INSERT INTO users (email, username, role) VALUES (?, ?, ?)`;
-        mydatabase.query(signupQuery, [user.email, user.username, user.role], (err, result) => {
+        const signupQuery = `INSERT INTO users (email, username) VALUES (?, ?)`;
+        mydatabase.query(signupQuery, [user.email, user.username], (err, result) => {
             if (err) {
                 console.error('Database Error:', err.message);
                 return res.status(500).json({ error: 'Failed to sign up. Please try again later.' });

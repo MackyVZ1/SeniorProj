@@ -39,9 +39,6 @@ export default function Login({ setUser, setOpenLogin }) {
     console.log("Login Failure.");
   };
 
-  useEffect(()=>{
-    console.log(updatedUser)
-  },[])
 
   return (
     <GoogleOAuthProvider clientId={clientId}>

@@ -2,11 +2,20 @@ import React from 'react'
 
 function Loginheader() {
   return (
-    <header className="w-full h-auto bg-white sm:bg-purple-400 sm:flex sm:h-24">
+ <header className="w-full h-auto bg-white sm:bg-fuchsia-600/70 sm:flex sm:h-23 sm:shadow-purple-400/70 sm:shadow-xl sm:ring-2 sm:ring-purple-400">
       <div className='justify-center flex'>
-        <img className="w-28 h-28 sm:w-16 sm:h-16 sm:rounded-4xl sm:ml-6 sm:mt-4"src='src\components\elements\dentlogo.png'/>
+        <img className="w-32 h-32 
+        sm:w-18 sm:h-18 sm:rounded-4xl sm:ml-12 sm:mt-2 sm:border-purple-300 sm:ring-2 sm:ring-purple-400 
+        md:ml-12 
+        lg:ml-18
+        xl:ml-20
+        "src='src\components\elements\dentlogo.png'/>
       </div>
-      {/**<div className='text-center sm:text-white sm:p-auto'>โรงพยาบาลทันตกรรม คณะทันตแพทยศาสตร์ มหาวิทยาลัยนเรศวร</div>*/}
+      <div className='text-center font-bold drop-shadow-lg sm:text-white sm:text-lg sm:ml-14 sm:mt-4 sm:drop-shadow-lg
+      md:ml-18 md:mt-8
+      lg:text-xl lg:ml-42
+      xl:ml-64
+      2xl:ml-94'>โรงพยาบาลทันตกรรม คณะทันตแพทยศาสตร์ <br className='md:hidden'/> มหาวิทยาลัยนเรศวร</div>
     </header>
   )
 }

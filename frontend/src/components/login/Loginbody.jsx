@@ -44,7 +44,6 @@ function Loginbody() {
             ยืนยัน
           </button>
         </div>
-        
       </div>
     </div>
   )

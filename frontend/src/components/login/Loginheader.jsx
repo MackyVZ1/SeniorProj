@@ -9,7 +9,7 @@ function Loginheader() {
         md:ml-12 
         lg:ml-18
         xl:ml-20
-        "src='src\components\elements\dentlogo.png'/>
+        "src='public\dentlogo.png'/>
       </div>
       <div className='text-center font-bold drop-shadow-lg sm:text-white sm:text-lg sm:ml-14 sm:mt-4 sm:drop-shadow-lg
       md:ml-18 md:mt-8

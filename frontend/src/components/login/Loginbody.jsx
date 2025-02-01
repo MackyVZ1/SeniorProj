@@ -1,10 +1,44 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react'
+import axios from 'axios' // ใช้งาน axios
 import Loginbg from './Loginbg'
+import {useNavigate} from 'react-router-dom' // ใช้งาน useNavigate
 
 function Loginbody() {
-  const [username, setUsername] = useState(null); // ชื่อผู้ใช้
-  const [password, setPassword] = useState(null); // รหัสผา่น
+  const [username, setUsername] = useState(''); // ชื่อผู้ใช้
+  const [password, setPassword] = useState(''); // รหัสผา่น
+  const [userData, setuserData] = useState(''); // ข้อมูลผู้ใช้
+  const [loginError, setloginError] = useState(''); // ข้อผิดพลาดในการเข้าสู่ระบบ
+  const navigate = useNavigate(); // ใช้งาน useNavigate สำหรับการย้ายหน้า
+
+  // Login
+  const login = async () => {
+    // ถ้าไม่ได้กรอกชื่อผู้ใช้หรือรหัสผ่าน
+    if(!username && !password){
+      setloginError('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน');
+    }
+    else if(!password){
+      setloginError('กรุณากรอกรหัสผ่าน');
+    }
+    else if(!username){
+      setloginError('กรุณากรอกชื่อผู้ใช้');
+    }
+    else{
+      try {
+        const dataResponse = await axios.post('http://localhost:3000/api/login', {username, password});
+        if(dataResponse.data[0]){
+          setuserData(dataResponse.data[0]);
+          navigate('/mainpage', {state: {userData: dataResponse.data[0]}}); // ย้ายหน้าไปที่ Mainpage
+        }
+      }catch(e){
+        setuserData(e.message || 'Login Failed!');
+      }
+    }
+  }
+
+  useEffect(() => {
+    console.log(`User: ${userData.username}, Role: ${userData.role}`);
+  }, [userData])
 
   return (
     <div className="relative flex items-center justify-center p-12">
@@ -27,7 +61,8 @@ function Loginbody() {
             className=" bg-white rounded-2xl w-64 p-5 h-10 font-medium text-center md:w-76"
             type="text"
             value={username}
-            onChange={(e) => {setUsername(e.target.value)}}
+            onChange={(e) => setUsername(e.target.value)}
+            
           />
           <p className="pb-6"></p>
           {/**ชื่อผู้ใช้ */}
@@ -36,7 +71,7 @@ function Loginbody() {
             className=" bg-white rounded-2xl w-64 p-5 h-10 text-center md:w-76"
             type="password"
             value={password}
-            onChange={(e) => {setPassword(e.target.value)}}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         {/*ปุ่มเข้าสู่ระบบ*/}
@@ -44,10 +79,12 @@ function Loginbody() {
           <button className="bg-purple-600 rounded-2xl w-28 h-12 
           font-semibold text-white drop-shadow-lg transition duration-500 
           hover:bg-white hover:text-purple-700 hover:border-purple-200"
-          onClick={null}>
+          onClick={login}>
             ยืนยัน
           </button>
         </div>
+        {/*ข้อผิดพลาดในการเข้าสู่ระบบ*/}
+        {loginError && <p className="text-red-500 text-center p-10 sm:text-2xl">{loginError}</p>}
       </div>
     </div>
   )

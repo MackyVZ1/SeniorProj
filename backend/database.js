@@ -1,13 +1,27 @@
 const mysql      = require('mysql');
 const connection = mysql.createPool({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'dentistrydatabase',
+  host     : 'becct8wm9kkmgla1znpc-mysql.services.clever-cloud.com',
+  user     : 'uni7obbbmtobdmpz', 
+  password : 's9zqbpH6eCR3BU4Ww1gD', 
+  database : 'becct8wm9kkmgla1znpc', 
   port : 3306,
   connectionLimit:100
 });
+// สำหรับทดสอบออนไลน์
+//   host     : 'becct8wm9kkmgla1znpc-mysql.services.clever-cloud.com',
+//   user     : 'uni7obbbmtobdmpz', 
+//   password : 's9zqbpH6eCR3BU4Ww1gD', 
+//   database : 'becct8wm9kkmgla1znpc', 
+//   port : 3306,
+//   connectionLimit:100
 
+// สำหรับทดสอบแบบ localhost
+//   host     : 'localhost', 
+//   user     : 'root', 
+//   password : '',
+//   database : 'dentistrydatabase',
+//   port : 3306,
+//   connectionLimit:100
 try{
     connection.getConnection((err) => {
         // ถ้าเชื่อมต่อไม่ได้

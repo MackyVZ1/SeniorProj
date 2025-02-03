@@ -30,6 +30,9 @@ function Loginbody() {
           setuserData(dataResponse.data[0]);
           navigate('/mainpage', {state: {userData: dataResponse.data[0]}}); // ย้ายหน้าไปที่ Mainpage
         }
+        else{
+          setloginError("ไม่พบผู้ใช้  ")
+        }
       }catch(e){
         setuserData(e.message || 'Login Failed!');
       }
@@ -86,6 +89,8 @@ function Loginbody() {
         {/*ข้อผิดพลาดในการเข้าสู่ระบบ*/}
         {loginError && <p className="text-red-500 text-center p-10 sm:text-2xl">{loginError}</p>}
       </div>
+
+
     </div>
   )
 }

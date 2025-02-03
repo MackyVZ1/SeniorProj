@@ -9,7 +9,8 @@ app.use(express.json());
 // ใช้ app.use(cors()) สำหรับการทดสอบเท่านั้น
 // ใช้จริงจะเปลี่ยน domain เป็น ของมอ
 app.use(cors({
-    origin:'*'
+    origin:'*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // ระบุเมธอดที่อนุญาต
 }))
 
 // สร้างเส้นทาง

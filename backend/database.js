@@ -1,9 +1,9 @@
 const mysql      = require('mysql');
 const connection = mysql.createPool({
-  host     : 'becct8wm9kkmgla1znpc-mysql.services.clever-cloud.com',
-  user     : 'uni7obbbmtobdmpz', 
-  password : 's9zqbpH6eCR3BU4Ww1gD', 
-  database : 'becct8wm9kkmgla1znpc', 
+  host     : 'localhost',
+  user     : 'root', 
+  password : '', 
+  database : 'dentistrydatabase', 
   port : 3306,
   connectionLimit:100
 });

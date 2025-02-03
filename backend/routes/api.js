@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const mydatabase = require('../database');
 
+// api for test
+router.get('/', (req,res) => {
+    res.send("Hello from API");
+})
+
 // สร้างเส้นทางสำหรับ Login / Signin
 router.post('/login', (req,res) => {
     // รับค่า Username และ Password จากผู้ใช้

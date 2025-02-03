@@ -78,7 +78,7 @@ function Loginbody() {
         <div className="justify-center items-center flex p-6">
           <button className="bg-purple-600 rounded-2xl w-28 h-12 
           font-semibold text-white drop-shadow-lg transition duration-500 
-          hover:bg-white hover:text-purple-700 hover:border-purple-200"
+          hover:bg-purple-700 "
           onClick={login}>
             ยืนยัน
           </button>

@@ -25,7 +25,7 @@ function Loginbody() {
     }
     else{
       try {
-        const dataResponse = await axios.post('http://localhost:3000/api/login', {username, password});
+        const dataResponse = await axios.post('https://senior-proj-backend.vercel.app/api/login', {username, password});
         if(dataResponse.data[0]){
           setuserData(dataResponse.data[0]);
           navigate('/mainpage', {state: {userData: dataResponse.data[0]}}); // ย้ายหน้าไปที่ Mainpage

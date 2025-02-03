@@ -8,7 +8,9 @@ app.use(express.json());
 // ใช้งาน cors สำหรับการทำ Cross-Origin Resource Sharing ควบคุมการเข้าถึงข้อมูลระหว่างเว็บไซต์
 // ใช้ app.use(cors()) สำหรับการทดสอบเท่านั้น
 // ใช้จริงจะเปลี่ยน domain เป็น ของมอ
-app.use(cors())
+app.use(cors({
+    origin:'*'
+}))
 
 // สร้างเส้นทาง
 app.use('/api', require('./routes/api'));

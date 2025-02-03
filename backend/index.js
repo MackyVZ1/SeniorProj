@@ -13,6 +13,10 @@ app.use(cors())
 // สร้างเส้นทาง
 app.use('/api', require('./routes/api'));
 
+app.get("/", (req, res) => {
+    res.json({msg: "Hello"})
+})
+
 app.listen(3000, () =>{
     console.log("Server is running on port 3000");
 });

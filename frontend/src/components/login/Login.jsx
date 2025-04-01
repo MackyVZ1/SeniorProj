@@ -1,6 +1,6 @@
 import React from 'react'
-import Loginheader from './Loginheader'
-import Loginbody from './Loginbody'
+import Loginheader from './header/Loginheader'
+import Loginbody from './body/Loginbody'
 
 function Login() {
   return (

@@ -59,6 +59,12 @@ function Mainpagenavmobile({ username, roleID, setAction }) {
               </button>
               <button
                 className="w-full py-6 pb-6 px-4 bg-purple-700 hover:bg-purple-700/50 text-end"
+                onClick={() => setAction("Search patient")}
+              >
+                ค้นหาคนไข้
+              </button>
+              <button
+                className="w-full py-6 pb-6 px-4 bg-purple-700 hover:bg-purple-700/50 text-end"
                 onClick={() => setAction("Insert patient")}
               >
                 เพิ่มข้อมูลคนไข้ใหม่

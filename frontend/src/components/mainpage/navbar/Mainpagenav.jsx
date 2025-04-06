@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Mainpagenav({ username, roleID, setAction }) {
   const navigate = useNavigate();
@@ -28,11 +28,33 @@ function Mainpagenav({ username, roleID, setAction }) {
       {/** Admin */}
       {roleID === 1 && (
         <nav className="hidden sm:flex sm:bg-purple-700 sm:w-full sm:h-14 sm:justify-between sm:items-center sm:text-white">
-          <button className="h-full w-full transition duration-150 hover:bg-purple-600" onClick={() => setAction("Manage user")}>จัดการข้อมูลผู้ใช้</button>
-          <button className="h-full w-full transition duration-150 hover:bg-purple-600">ค้นหาคนไข้</button>
-          <button className="h-full w-full transition duration-150 hover:bg-purple-600" onClick={() => setAction("Insert patient")}>เพิ่มข้อมูลคนไข้ใหม่</button>
-          <button className="h-full w-full transition duration-150 hover:bg-purple-600">จอง/คืนชาร์ต</button>
-          <button className="h-full w-full transition duration-150 hover:bg-purple-600" onClick={handleSignout}>ลงชื่อออก</button>
+          <button
+            className="h-full w-full transition duration-150 hover:bg-purple-600"
+            onClick={() => setAction("Manage user")}
+          >
+            จัดการข้อมูลผู้ใช้
+          </button>
+          <button
+            className="h-full w-full transition duration-150 hover:bg-purple-600"
+            onClick={() => setAction("Seach patient")}
+          >
+            ค้นหาคนไข้
+          </button>
+          <button
+            className="h-full w-full transition duration-150 hover:bg-purple-600"
+            onClick={() => setAction("Insert patient")}
+          >
+            เพิ่มข้อมูลคนไข้ใหม่
+          </button>
+          <button className="h-full w-full transition duration-150 hover:bg-purple-600">
+            จอง/คืนชาร์ต
+          </button>
+          <button
+            className="h-full w-full transition duration-150 hover:bg-purple-600"
+            onClick={handleSignout}
+          >
+            ลงชื่อออก
+          </button>
         </nav>
       )}
     </>
